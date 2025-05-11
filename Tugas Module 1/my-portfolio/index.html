@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page1">
+        <header>
+            <div class="kiri">
+                RamaT.
+            </div>
+            <div class="kanan">
+                <button>Home</button>
+                <button>About Me</button>
+                <button>Portfolio</button>
+            </div>
+        </header>
+        <div class="home">
+            <div class="gambar">
+                <img src="images/kody_flipping_flying_red.webp" alt="" width="500px">
+            </div>
+            <div class="nama">
+                <div style="font-size: 30px; font-weight: bold; color: #db3477;">Hi There, I'm</div>
+                <div style="font-size: 65px; font-weight: bold; margin-top: 10px;">Rama Tihara</div>
+                <div class="typeJsText" data-typetext="Software Developer"></div>
+                <div class="sosmed">
+                    <a href="https://www.instagram.com/ramatiharaa/" target="_blank">
+                        <div class="wrapper">
+                            <div class="circle-background">
+                                <img src="images/instagram.png" alt="" />
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rama-tihara-bbba461b8/" target="_blank">
+                        <div class="wrapper">
+                            <div class="circle-background">
+                                <img src="images/linkedin.png" alt="" />
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/ramatiharaa/" target="_blank">
+                        <div class="wrapper">
+                            <div class="circle-background">
+                                <img src="images/github.png" alt="" />
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let typeJsText = document.querySelector(".typeJsText");
+        let textArray = typeJsText.dataset.typetext.split("");
+        let counter = -1;
+
+        typeJsText.innerHTML = "";
+
+        function typeJs() {
+            if (counter < typeJsText.dataset.typetext.length) {
+                counter++;
+                typeJsText.innerHTML += typeJsText.dataset.typetext.charAt(counter);
+                textArray = typeJsText.dataset.typetext.split("");
+            } else {
+                textArray.pop();
+                typeJsText.innerHTML = textArray.join("");
+                if (textArray.length == 0) {
+                    counter = -1;
+                }
+            }
+        }
+
+        setInterval(() => {
+        typeJs();
+        }, 100);
+
+    </script>
+</body>
+</html>

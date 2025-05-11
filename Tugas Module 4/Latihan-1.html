@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --pink: hsl(320, 93%, 63%);
+            --trans-red: hsl(358, 88%, 61%);
+            --yellow: hsl(46, 92%, 55%);
+        }
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 200ms ease-out;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #202120;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            appearance: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            isolation: isolate;
+        }
+        .button {
+            color: #000;
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: 800;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 60px;
+            border-radius: 9999rem;
+            background: white;
+            box-shadow: 0 12px 24px 0 color-mix(in oklab, black, transparent 90%);
+            position: relative;
+            overflow: hidden;
+  
+            &::before {
+                content: "";
+                border-radius: inherit;
+                background: linear-gradient(90deg, var(--pink), var(--trans-red), var(--yellow));
+                z-index: -1;
+                position: absolute;
+                inset: 0;
+                transform: translateX(-100%);
+            }
+            & > span {
+                color: transparent;
+                background: linear-gradient(90deg, var(--pink), var(--trans-red), var(--yellow));
+                background-clip: text;
+            }
+  
+            &:is(:hover, :focus) {
+                box-shadow: 0 0 0 0 color-mix(in oklab, black, transparent 90%);
+                scale: 1.2;
+                
+                &::before {
+                transform: translateX(0);
+                }
+                
+                & > span {
+                color: white;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <button onclick='clickMe()' class="button">
+        <span>Click Me</span>
+    </button>
+
+    <script>
+        function clickMe() {
+            const now = new Date();
+            const hour = now.getHours();
+            let waktu = ''
+
+            if (hour >= 5 && hour < 11) {
+                waktu = 'Pagi';
+            } else if (hour >= 11 && hour < 15) {
+                waktu = 'Siang';
+            } else if (hour >= 15 && hour < 18) {
+                waktu = 'Sore';
+            } else if (hour >= 18 && hour < 23) {
+                waktu = 'Malam';
+            } else {
+                waktu = 'Dini Hari';
+            }
+
+            alert(waktu)
+        }
+    </script>
+</body>
+</html>

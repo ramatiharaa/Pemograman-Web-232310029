@@ -1,0 +1,104 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.page1 {
+    height: 100vh;
+    background-image: url(../images/bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+
+header .kiri {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+header .kanan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    width: 70%;
+}
+
+header .kanan button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.home {
+    margin-top: 40px;
+    display: flex;
+    height: 550px;
+}
+
+.gambar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.nama {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;  
+}
+
+.typeJsText {
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    border-right: 1px solid #414141;
+    height: 30px;
+    line-height: 30px;
+    color: #db3477;
+}
+
+.sosmed {
+    margin-top: 20px;
+    display: flex;
+    gap: 7px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.circle-background {
+    background-color: #db3477;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .circle-background img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+  

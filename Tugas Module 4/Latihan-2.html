@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #202120;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #2e2f2e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            width: 300px;
+            color: white;
+        }
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #af4c7f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #a04578;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Mencari Akar Persamaan Kuadrat</h2>
+        <label for="a">a:</label>
+        <input type="number" id="a" placeholder="Masukkan nilai a" required>
+        <label for="b">b:</label>
+        <input type="number" id="b" placeholder="Masukkan nilai b" required>
+        <label for="c">c:</label>
+        <input type="number" id="c" placeholder="Masukkan nilai c" required>
+        <button onclick="cariAkar()">Hitung Akar</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function cariAkar() {
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            const D = b * b - 4 * a * c;
+            let resultText = '';
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                resultText = 'Harap masukkan nilai a, b, dan c dengan benar.';
+            } else if (D > 0) {
+                const x1 = (-b + Math.sqrt(D)) / (2 * a);
+                const x2 = (-b - Math.sqrt(D)) / (2 * a);
+                resultText = `Akar-akarnya real dan berbeda: x1 = ${x1}, x2 = ${x2}`;
+            } else if (D === 0) {
+                const x1 = x2 = -b / (2 * a);
+                resultText = `Akar-akarnya real dan sama: x1 = x2 = ${x1}`;
+            } else {
+                const realPart = -b / (2 * a);
+                const imagPart = Math.sqrt(-D) / (2 * a);
+                resultText = `Akar-akarnya kompleks:\n x1 = ${realPart} + ${imagPart}i\n x2 = ${realPart} - ${imagPart}i`;
+            }
+
+            document.getElementById('result').innerText = resultText;
+        }
+    </script>
+</body>
+</html>

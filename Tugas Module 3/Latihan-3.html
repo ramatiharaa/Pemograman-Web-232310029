@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #202120;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            width: 250px;
+            background-color: #2e2f2e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px 12px;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100px;
+        }
+        input[readonly] {
+            background-color: #f0f0f0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #af4c7f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #a04578;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="2">PERHITUNGAN<br>FAKTORIAL dan DERET</th>
+        </tr>
+        <tr>
+            <td>N</td>
+            <td><input type="number" id="inputN" min="0"></td>
+        </tr>
+        <tr>
+            <td>Hasil</td>
+            <td><input type="text" id="hasilDeret" readonly></td>
+        </tr>
+        <tr>
+            <td>Faktorial</td>
+            <td><input type="text" id="hasilFaktorial" readonly></td>
+        </tr>
+        <tr>
+            <td>Jumlah</td>
+            <td><input type="text" id="hasilJumlah" readonly></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <button onclick="hitung()">Submit</button>
+                <button onclick="resetForm()">Reset</button>
+            </td>
+        </tr>
+    </table>
+  
+    <script>
+        function hitung() {
+            const n = parseInt(document.getElementById('inputN').value);
+            if (isNaN(n) || n < 0) {
+                alert('Masukkan bilangan bulat positif.');
+                return;
+            }
+    
+            const deret = Array.from({ length: n }, (_, i) => i + 1);
+            const hasilDeret = deret.join(' ');
+    
+            let faktorial = 1;
+            for (let i = 1; i <= n; i++) {
+                faktorial *= i;
+            }
+    
+            const jumlah = deret.reduce((a, b) => a + b, 0);
+    
+            document.getElementById('hasilDeret').value = hasilDeret;
+            document.getElementById('hasilFaktorial').value = faktorial;
+            document.getElementById('hasilJumlah').value = jumlah;
+        }
+  
+        function resetForm() {
+            document.getElementById('inputN').value = '';
+            document.getElementById('hasilDeret').value = '';
+            document.getElementById('hasilFaktorial').value = '';
+            document.getElementById('hasilJumlah').value = '';
+        }
+    </script>
+</html>

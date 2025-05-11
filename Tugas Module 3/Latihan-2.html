@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #202120;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: white;
+        }
+        .table-par {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #af4c7f;
+            padding: 8px;
+            text-align: left;
+            color: white;
+        }
+        th {
+            background-color: #773457;
+            color: white;
+        }
+        .kiri {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+        }
+        .kanan {
+            width: 50%;
+        }
+        .form {
+            width: 100%;
+        }
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            background-color: #2e2f2e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+        .field {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .label {
+            width: 35%;
+            color: white;
+            font-weight: bold;
+        }
+        .input {
+            width: 65%;
+        }
+        .input input[type="text"], .input input[type="number"], .input select {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        .input input[type="radio"] {
+            margin-right: 5px;
+        }
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        .pesan-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #af4c7f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .pesan-btn:hover {
+            background-color: #a04578;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-30px);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-overlay.open .modal-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .close-modal-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .close-modal-btn:hover {
+            background-color: #555;
+        }
+        #modal-data p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Travel IBIK Abadi</h1>
+    <div class="content">
+        <div class="kiri">
+            <div class="table-par">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Eksekutif</th>
+                            <th>Bisnis</th>
+                            <th>Ekonomi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jakarta</td>
+                            <td>70000</td>
+                            <td>40000</td>
+                            <td>10000</td>
+                        </tr>
+                        <tr>
+                            <td>Solo</td>
+                            <td>80000</td>
+                            <td>50000</td>
+                            <td>20000</td>
+                        </tr>
+                        <tr>
+                            <td>Surabaya</td>
+                            <td>90000</td>
+                            <td>60000</td>
+                            <td>30000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="kanan">
+            <form id="myForm">
+                <div class="form">
+                    <div class="field">
+                        <div class="label">
+                            <label for="npemesan">Nama Pemesan</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" id="npemesan" name="npemesan" required />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            <label for="tujuan">Tujuan</label>
+                        </div>
+                        <div class="input">
+                            <select name="tujuan" id="tujuan" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Jakarta">Jakarta</option>
+                                <option value="Solo">Solo</option>
+                                <option value="Surabaya">Surabaya</option>
+                            </select>
+                         </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            <label for="kelas">Kelas</label>
+                        </div>
+                        <div class="input">
+                            <select name="kelas" id="kelas" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Eksekutif">Eksekutif</option>
+                                <option value="Bisnis">Bisnis</option>
+                                <option value="Ekonomi">Ekonomi</option>
+                            </select>
+                         </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            <label for="btiket">Banyak Tiket</label>
+                        </div>
+                        <div class="input">
+                            <input type="number" id="btiket" name="btiket" required />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">Status Member</div>
+                        <div class="input radio-group">
+                            <label><input type="radio" name="smember" value="Ya" required />Ya</label>
+                            <label><input type="radio" name="smember" value="Bukan Member" required />Bukan Member</label>
+                        </div>
+                    </div>
+                    <button class="pesan-btn">Pesan</button>
+                    <div class="modal-overlay" id="modalOverlay">
+                        <div class="modal-content">
+                            <h2>Total</h2>
+                            <div id="modal-data"></div>
+                            <button type="button" class="close-modal-btn">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const form = document.getElementById('myForm');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeModalBtn = document.querySelector('.close-modal-btn');
+        const modalData = document.getElementById('modal-data');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const npemesan = document.getElementById('npemesan').value;
+            const tujuan = document.getElementById('tujuan').value;
+            const kelas = document.getElementById('kelas').value;
+            const btiket = document.getElementById('btiket').value;
+            const smember = document.querySelector('input[name="smember"]:checked')?.value || '';
+
+            let hargaTiket
+            let diskon
+            let subtotal
+            let totalBayar
+
+            // Harga Tiket
+            if (tujuan == 'Jakarta') {
+                if (kelas == 'Eksekutif') {
+                    hargaTiket = 70000
+                } else if (kelas == 'Bisnis') {
+                    hargaTiket = 40000
+                } else {
+                    hargaTiket = 10000
+                }
+            } else if (tujuan == 'Solo') {
+                if (kelas == 'Eksekutif') {
+                    hargaTiket = 80000
+                } else if (kelas == 'Bisnis') {
+                    hargaTiket = 50000
+                } else {
+                    hargaTiket = 20000
+                }
+            } else {
+                if (kelas == 'Eksekutif') {
+                    hargaTiket = 90000
+                } else if (kelas == 'Bisnis') {
+                    hargaTiket = 60000
+                } else {
+                    hargaTiket = 30000
+                }
+            }
+
+            //Subtotal
+            subtotal = btiket * hargaTiket;
+
+            //Total Bayar
+            if (smember == 'Ya') {
+                diskon = (subtotal * 10) / 100
+                totalBayar = subtotal - diskon
+            } else {
+                diskon = 0
+                totalBayar = subtotal
+            }
+
+            modalData.innerHTML = `
+                <p><strong>Harga Tiket:</strong> ${hargaTiket}</p>
+                <p><strong>Subtotal:</strong> ${subtotal}</p>
+                <p><strong>Diskon:</strong>${diskon}</p>
+                <p><strong>Total Bayar:</strong> ${totalBayar}</p>
+            `;
+    
+            modalOverlay.classList.add('open');
+        })
+        closeModalBtn.addEventListener('click', function () {
+            modalOverlay.classList.remove('open');
+        })
+    </script>
+
+</body>
+</html>

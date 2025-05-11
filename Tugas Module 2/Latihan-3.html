@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .navigasi {
+            height: 100px;
+            background-color: #006fc0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            color: white;
+        }
+
+        .navigasi ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 70px;
+        }
+        .navigasi li {
+            font-size: 25px;
+            width: 143px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .navigasi img {
+            margin-left: 10px;
+            margin-right: 30px;
+        }
+        section {
+            height: 60vh;
+            background-color: #d9e1f3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: row;
+        }
+        section h1 {
+            margin: 0;
+            padding: 0;
+            font-family: 'MyFont', sans-serif;
+            font-size: 80px;
+            font-weight: 80;
+        }
+        @font-face {
+            font-family: 'MyFont';
+            src: url('font/Goudy\ Old\ Style\ ITALIC.ttf') format('truetype');
+        }
+        article {
+            margin-top: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .card {
+            width: 100%;
+            border: 2px solid #006fc0;
+            height: 73vh;
+        }
+        article img {
+            width: 100%;;
+            border-bottom: 2px solid #006fc0;
+        }
+        .but {
+            display: flex;
+        }
+        .but button {
+            margin-top: 20px;
+            border: 2px solid #006fc0;
+            width: 150px;
+            height: 40px;
+            background-color: #00afef;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+        }
+        .but button:hover {
+            background-color: transparent;
+            color: #00afef;
+        }
+        .artbutt {
+            padding-left: 20px;
+        }
+        .buttonview {
+            width: 50%;
+            display: flex;
+            align-items:center;
+        }
+        .time {
+            display: flex;
+            width: 50%;
+            justify-content: flex-end;
+            padding-right: 35px;
+            font-size: 20px;
+            color: #959595;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lab Pemrograman Web</h1>
+        <nav class="navigasi">
+            <img src="images/ibik.png" alt="" height="60px">
+            <ul>
+                <li style="background-color: #00afef;">Home</li>
+                <li>Profile</li>
+                <li>Contact US</li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h1>"The purpose<br>of our lives<br>is to be happy."
+        <br><span style="font-family: Arial, Helvetica, sans-serif; font-size: 28px;">- DALAI LAMA -</span>
+        </h1>
+    </section>
+    <article>
+        <div class="card">
+            <img src="images/cardgambar1.png" alt="">
+            <div class="artbutt">
+                <div class="art">
+                    <p style="margin: 0; padding: 0; font-size: 32px;">
+                        An atom is the smallest unit of ordinary matter that 
+                        forms a chemical element. Every solid, liquid, gas, 
+                        and plasma is composed of neutral or ionized 
+                        atoms.
+                    </p>
+                    <div class="but">
+                        <div class="buttonview">
+                            <a href="Latihan-1.html" target="_self">
+                                <button>View</button>
+                            </a>
+                        </div>
+                        <div class="time">
+                            9 mins
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="card">
+            <img src="images/cardgambar2.png" alt="">
+            <div class="artbutt">
+                <div class="art">
+                    <p style="margin: 0; padding: 0; font-size: 32px;">
+                        World Wildlife Fund is committed to 
+                        endangered species protection. See how we 
+                        are ensuring that the world our children inherit 
+                        will be home to the same. 
+                    </p>
+                    <div class="but">
+                        <div class="buttonview">
+                            <a href="Latihan-2.html" target="_self">
+                                <button>View</button>
+                            </a>
+                        </div>
+                        <div class="time">
+                            9 mins
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer style="text-align: center; margin-top: 50px; margin-bottom: 40px;">
+        <p>Copyright &copy; Rama Tihara 2025</p>
+    </footer>
+</body>
+</html>

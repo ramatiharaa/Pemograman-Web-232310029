@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Document</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #202120;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .wrap {
+                width: 400px;
+                background-color: #2e2f2e;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            }
+            .form {
+                width: 100%;
+            }
+            .field {
+                display: flex;
+                margin-bottom: 20px;
+                align-items: center;
+            }
+            .label {
+                width: 35%;
+                color: white;
+                font-weight: bold;
+            }
+            .input {
+                width: 65%;
+            }
+            .input input[type="text"], .input input[type="number"], .input select {
+                width: 100%;
+                padding: 8px;
+                border: none;
+                border-radius: 5px;
+                box-sizing: border-box;
+                font-size: 14px;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
+            .input input[type="radio"] {
+                margin-right: 5px;
+            }
+            .radio-group {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: white;
+            }
+            .submit-btn {
+                width: 100%;
+                padding: 10px;
+                background-color: #af4c7f;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-weight: bold;
+                font-size: 16px;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+            .submit-btn:hover {
+                background-color: #a04578;
+            }
+            .input textarea {
+                width: 100%;
+                padding: 8px;
+                border: none;
+                border-radius: 5px;
+                box-sizing: border-box;
+                font-size: 14px;
+                resize: vertical;
+            }
+            .modal-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+            .modal-content {
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 10px;
+                width: 400px;
+                text-align: left;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transform: translateY(-30px);
+                opacity: 0;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            .modal-overlay.open {
+                display: flex;
+                opacity: 1;
+                visibility: visible;
+            }
+            .modal-overlay.open .modal-content {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .close-modal-btn {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #333;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            .close-modal-btn:hover {
+                background-color: #555;
+            }
+            #modal-data p {
+                margin: 5px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <form id="myForm">
+                <div class="form">
+                    <div class="field">
+                        <div class="label">
+                            <label for="nim">NIM</label>
+                        </div>
+                        <div class="input">
+                            <input type="number" id="nim" name="nim" required />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            <label for="nama">Nama</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" id="nama" name="nama" required />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">Jenis Kelamin</div>
+                        <div class="input radio-group">
+                            <label><input type="radio" name="jkelamin" value="Laki-laki" required />Male</label>
+                            <label><input type="radio" name="jkelamin" value="Perempuan" required />Female</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            <label for="agama">Agama</label>
+                        </div>
+                        <div class="input">
+                            <select name="agama" id="agama" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Kristen">Kristen</option>
+                                <option value="Budha">Budha</option>
+                                <option value="Hindu">Hindu</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            <label for="status">Status</label>
+                        </div>
+                        <div class="input">
+                            <select name="status" id="status" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Menikah">Menikah</option>
+                                <option value="Lajang">Lajang</option>
+                            </select>
+                         </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            <label for="jurusan">Jurusan</label>
+                        </div>
+                        <div class="input">
+                            <select name="jurusan" id="jurusan" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Teknologi Informasi">Teknologi Informasi</option>
+                                <option value="Manajemen">Manajemen</option>
+                                <option value="Pariwisata">Pariwisata</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="label">
+                            <label for="komentar">Komentar</label>
+                        </div>
+                        <div class="input">
+                            <textarea rows="4" name="comment" placeholder="Input komentar disini...." required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Kirim</button>
+                    <div class="modal-overlay" id="modalOverlay">
+                        <div class="modal-content">
+                            <h2>Data Anda</h2>
+                            <div id="modal-data"></div>
+                            <button type="button" class="close-modal-btn">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script>
+            const form = document.getElementById('myForm');
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modalData = document.getElementById('modal-data');
+            const closeModalBtn = document.querySelector('.close-modal-btn');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const nim = document.getElementById('nim').value;
+                const nama = document.getElementById('nama').value;
+                const jkelamin = document.querySelector('input[name="jkelamin"]:checked')?.value || '';
+                const agama = document.getElementById('agama').value;
+                const status = document.getElementById('status').value;
+                const jurusan = document.getElementById('jurusan').value;
+                const komentar = document.querySelector('textarea[name="comment"]').value;
+                modalData.innerHTML = ` <p><strong>NIM:</strong> ${
+                    nim
+                }
+                </p> <p><strong>Nama:</strong> ${
+                    nama
+                }
+                </p> <p><strong>Jenis Kelamin:</strong> ${
+                    jkelamin
+                }
+                </p> <p><strong>Agama:</strong> ${
+                    agama
+                }
+                </p> <p><strong>Status:</strong> ${
+                    status
+                }
+                </p> <p><strong>Jurusan:</strong> ${
+                    jurusan
+                }
+                </p> <p><strong>Komentar:</strong> ${
+                    komentar
+                }
+                </p> `;
+                modalOverlay.classList.add('open');
+            });
+            closeModalBtn.addEventListener('click', function () {
+                modalOverlay.classList.remove('open');
+            });
+        </script>
+    </body>
+</html>
